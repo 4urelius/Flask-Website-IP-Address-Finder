@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<center>
+
+<form method='POST'>
+<br><br><br><br>
+<input class='url-box' type='text' name='url' placeholder='URL'>
+<input class='submit-button' type='submit' value='Find IP'>
+  </form>
+<br><br>
+
+{% with messages = get_flashed_messages() %}
+
+{% for message in messages %}
+<div class="container p-3 my-3 border">
+<h1>{{message}}</h1>
+</div>
+{% endfor %}
+
+{% endwith %}
+  </center>
+<br><br><br><br><br>
+<div class="container-sm p-3 my-3 border">
+<h3>Latest Checked Websites</h3>
+{% for ip_address in ip_addresses%}
+<h5><a style="text-decoration: none;" class='redirect' href='http://{{ip_address.url}}'>{{ip_address.url}} - {{ip_address.ip}}</a></h5>
+{% endfor %}
+</div>
+{% endblock %}

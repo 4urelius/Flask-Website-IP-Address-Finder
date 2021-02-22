@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+  <br>
+<form method='post'>
+  <div class='mb-3'>
+    <label for='topic' class='form-label'>Topic</label>
+    <input type='text' class='form-control' id='topic' name='topic' style='width: 600px;' required>
+  </div>
+  <div class='mb-3'>
+    <label for='email' class='form-label'>Email</label>
+    <input type='email' class='form-control' id='email' name='email' style='width: 600px;' required>
+  </div>
+  <div class='mb-3'>
+    <label for='message' class='form-label'>Message</label>
+    <textarea type='text' class='form-control' id='message' name='message' style='width: 600px; height: 200px;' required></textarea>
+  </div>
+  <input class='submit-button' type='submit' value='Send'>
+</form>
+<br><br>
+{% with messages = get_flashed_messages()%}
+
+{% for message in messages %}
+
+<h2>{{message}}</h2>
+
+{% endfor %}
+{% endwith %}
+</center>
+{% endblock %}
